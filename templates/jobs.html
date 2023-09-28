@@ -31,7 +31,7 @@
                 <td>{% if job.user %}{{ job.user }}{% else %}Usuário não cadastrado{% endif %}</td>
                 <td>{% if job.nome %}{{ job.nome }}{% else %}N/A{% endif %}</td>
                 <td>{% if job.empresa %}{{ job.empresa }}{% else %}N/A{% endif %}</td>
-                <td>{% if job.salario %}R$ {{ job.salario|floatformat:2 }}{% else %}N/A{% endif %}</td>
+                <td>{% if job.salario %}R$ {{ job.salario }}{% else %}N/A{% endif %}</td>
                 <td>{% if job.cidade %}{{ job.cidade }}{% else %}N/A{% endif %}</td>
                 <td>{% if job.qtd_jobs %}{{ job.qtd_jobs }}{% else %}N/A{% endif %}</td>
                 <td>
