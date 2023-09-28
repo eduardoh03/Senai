@@ -1,16 +1,18 @@
 from django.shortcuts import render
-from .models import *
+from .models import Noticia
+
 
 # Create your views here.
 def blog(request):
     lista_noticias = Noticia.objects.all()
     dados = {
-        "noticias":lista_noticias
-        }
+        "noticias": lista_noticias
+    }
     return render(request, "blog.html", dados)
 
-def DetailsBlog(request, id):
-    busca_id = Noticia.objects.get(id=id)
+
+def details_blog(request, blog_id):
+    busca_id = Noticia.objects.get(id=blog_id)
     dados = {
         "noticia": busca_id
     }

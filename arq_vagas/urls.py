@@ -27,24 +27,9 @@ urlpatterns = [
     # http://127.0.0.1:8000/admin/
     path('admin/', admin.site.urls),
     path('core/', include('apps.core.urls')),
-
+    path('jobs/', include('apps.jobs.urls')),
+    path('blog/', include('apps.blog.urls')),
     # http://127.0.0.1:8000/
     path('', home, name="pagina_home"),
-
-    # http://127.0.0.1:8000/blog/
-    path('blog/', blog, name="pagina_blog"),
-
-    path('blog/<int:id>', DetailsBlog, name="blog_detalhes"),
-
-    # http://127.0.0.1:8000/jobs/
-    path('jobs/', jobs, name="pagina_jobs"),
-    path('jobs/update/<int:job_id>/', update_job, name="update_job"),
-    path('jobs/creat_job', creat_job, name="pagina_jobs_creat_job"),
-    path('jobs/delete_job/<int:job_id>', delete_job, name="delete_job"),
-
-    # http://127.0.0.1:8000/jobs/1/
-    path('jobs/<int:id>/', job, name="ver_job"),
-
-    # grappelli URLS
     path('grappelli/', include('grappelli.urls')),
 ]

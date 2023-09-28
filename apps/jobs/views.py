@@ -24,7 +24,7 @@ def job(request, id):
     return render(request, "vaga.html", dados)
 
 
-def creat_job(request):
+def create_job(request):
     if request.method == 'POST':
         form = JobForm(request.POST, request.FILES)
         if form.is_valid():
