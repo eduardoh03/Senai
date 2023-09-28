@@ -40,6 +40,9 @@ def creat_job(request):
 
 def update_job(request, job_id):
     instance = get_object_or_404(Job, id=job_id)
+    if instance.user != request.user:
+
+        return redirect('pagina_jobs')
     form = JobForm(request.POST or None, request.FILES or None, instance=instance)
     if form.is_valid():
         form.save()

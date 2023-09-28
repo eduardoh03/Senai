@@ -16,7 +16,7 @@
     </div>
 
     <table>
-    <caption>Lista de vagas</caption>
+        <caption>Lista de vagas</caption>
         <tr>
             <th class="center">Usuário</th>
             <th class="center">Nome da vaga</th>
@@ -38,8 +38,10 @@
                 <td>
                     <a class="action-link view" href="{% url 'ver_job' job.id %}" title="Ver detalhes da vaga">Ver
                         vaga</a>
-                    <a class="action-link delete" href="{% url 'delete_job' job.id %}" title="Deletar esta vaga">Deletar
-                        vaga</a>
+                    {% if job.user == user or user.is_staff %}
+                        <a class="action-link delete" href="{% url 'delete_job' job.id %}" title="Deletar esta vaga">Deletar
+                            vaga</a>
+                    {% endif %}
                 </td>
             </tr>
         {% endfor %}

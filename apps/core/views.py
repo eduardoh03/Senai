@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
@@ -5,7 +6,6 @@ from .forms import UserForm
 from .models import Configuracao
 
 
-# Create your views here.
 def home(request):
     configuracao = Configuracao.objects.all()
 
@@ -48,6 +48,7 @@ def entrar(request):
     return render(request, "login.html", {'form': form})
 
 
+@login_required(login_url='core/entrar')
 def sair(request):
     logout(request)
     return redirect('pagina_home')
