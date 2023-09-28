@@ -11,7 +11,7 @@
 
 {% block conteudo %}
 
-    <div style="margin-bottom: 20px;">
+    <div class="action-link create">
         <a href="{% url 'pagina_jobs_creat_job' %}">Criar vaga</a>
     </div>
 
@@ -28,16 +28,21 @@
 
         {% for job in jobs %}
             <tr>
-                <td>{{ job.user }}</td>
-                <td>{{ job.nome }}</td>
-                <td>{{ job.empresa }}</td>
-                <td>R$ {{ job.salario }}</td>
-                <td>{{ job.cidade }}</td>
-                <td>{{ job.qtd_jobs }}</td>
-                <td><a href="{% url 'ver_job' job.id %}">Ver vaga</a>||
-                    <a href="{% url 'delete_job' job.id %}">Deletar vaga</a></td>
+                <td>{% if job.user %}{{ job.user }}{% else %}Usuário não cadastrado{% endif %}</td>
+                <td>{% if job.nome %}{{ job.nome }}{% else %}N/A{% endif %}</td>
+                <td>{% if job.empresa %}{{ job.empresa }}{% else %}N/A{% endif %}</td>
+                <td>{% if job.salario %}R$ {{ job.salario|floatformat:2 }}{% else %}N/A{% endif %}</td>
+                <td>{% if job.cidade %}{{ job.cidade }}{% else %}N/A{% endif %}</td>
+                <td>{% if job.qtd_jobs %}{{ job.qtd_jobs }}{% else %}N/A{% endif %}</td>
+                <td>
+                    <a class="action-link view" href="{% url 'ver_job' job.id %}" title="Ver detalhes da vaga">Ver
+                        vaga</a>
+                    <a class="action-link delete" href="{% url 'delete_job' job.id %}" title="Deletar esta vaga">Deletar
+                        vaga</a>
+                </td>
             </tr>
         {% endfor %}
+
 
     </table>
 {% endblock %}

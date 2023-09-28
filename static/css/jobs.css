@@ -37,3 +37,40 @@ a {
 a:hover {
     color: #4CAF50;
 }
+
+/* jobs.css */
+
+.action-link {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+.action-link.view {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.action-link.delete {
+    background-color: #f44336;
+    color: white;
+}
+
+.action-link.create a {
+    background-color: #008CBA;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.action-link.create a:hover {
+    background-color: white;
+    color: black;
+}
