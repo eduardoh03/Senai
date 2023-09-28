@@ -1,6 +1,26 @@
-<h1>Login</h1>
-<form method="post">
-    {{ form.as_p }}
-    {% csrf_token %}
-    <input type="submit" value="Submit">
-</form>
+{% extends "base.html" %}
+{% load static %}
+{% block conteudo %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    <div class="center-div">
+        <h1>Login</h1>
+        <form method="post">
+        {% if form.errors %}
+            <p>Usuário ou senha incorretos.</p>
+        {% endif %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+            {% csrf_token %}
+            <div class="input-group">
+                <label for="id_username">{{ form.username.label }}</label>
+                {{ form.username }}
+            </div>
+            <div class="input-group">
+                <label for="id_password">{{ form.password.label }}</label>
+                {{ form.password }}
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+{% endblock %}

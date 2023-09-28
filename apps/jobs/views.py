@@ -39,8 +39,8 @@ def creat_job(request):
 
 
 def update_job(request, job_id):
-    job = get_object_or_404(Job, id=job_id)
-    form = JobForm(request.POST or None, request.FILES or None, instance=job)
+    instance = get_object_or_404(Job, id=job_id)
+    form = JobForm(request.POST or None, request.FILES or None, instance=instance)
     if form.is_valid():
         form.save()
         return redirect('pagina_jobs')
@@ -50,6 +50,6 @@ def update_job(request, job_id):
 
 
 def delete_job(request, job_id):
-    job = get_object_or_404(Job, id=job_id)
-    job.delete()
+    instance = get_object_or_404(Job, id=job_id)
+    instance.delete()
     return redirect('pagina_jobs')
