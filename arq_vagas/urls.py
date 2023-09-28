@@ -40,6 +40,7 @@ urlpatterns = [
     path('jobs/', jobs, name="pagina_jobs"),
     path('jobs/update/<int:job_id>/', update_job, name="update_job"),
     path('jobs/creat_job', creat_job, name="pagina_jobs_creat_job"),
+    path('jobs/delete_job/<int:job_id>', delete_job, name="delete_job"),
 
     # http://127.0.0.1:8000/jobs/1/
     path('jobs/<int:id>/', job, name="ver_job"),

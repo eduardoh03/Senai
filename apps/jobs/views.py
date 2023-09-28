@@ -1,7 +1,10 @@
+import pprint
+
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import JobForm
 from .models import Job
+
 
 # Create your views here.
 def jobs(request):
@@ -9,8 +12,9 @@ def jobs(request):
 
     dados = {
         "jobs": jobs
-        }
+    }
     return render(request, "jobs.html", dados)
+
 
 def job(request, id):
     job = Job.objects.get(id=id)
@@ -19,14 +23,20 @@ def job(request, id):
     }
     return render(request, "vaga.html", dados)
 
+
 def creat_job(request):
-    form = JobForm(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        form.save()
-        return redirect('pagina_jobs')
+    if request.method == 'POST':
+        form = JobForm(request.POST, request.FILES)
+        if form.is_valid():
+            if request.user.is_authenticated:
+                form.save(user=request.user)
+                return redirect('pagina_jobs')
+            else:
+                form.add_error(None, 'User not authenticated')
     else:
-        print(form.errors)
+        form = JobForm()
     return render(request, "criar_vaga.html", {'form': form})
+
 
 def update_job(request, job_id):
     job = get_object_or_404(Job, id=job_id)
@@ -37,3 +47,9 @@ def update_job(request, job_id):
     else:
         print(form.errors)
     return render(request, "atualizar_vaga.html", {'form': form})
+
+
+def delete_job(request, job_id):
+    job = get_object_or_404(Job, id=job_id)
+    job.delete()
+    return redirect('pagina_jobs')

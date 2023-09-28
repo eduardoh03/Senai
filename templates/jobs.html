@@ -5,28 +5,31 @@
 {% block titulo_body %}Arq - Vagas{% endblock %}
 
 {% block conteudo %}
-<p>Todas as vagas:</p>
+    <p>Todas as vagas:</p>
+    <a href="{% url 'pagina_jobs_creat_job' %}">Criar vaga</a>
+    <table>
+        <tr>
+            <td>Usuário</td>
+            <td>Nome da vaga</td>
+            <td>Empresa</td>
+            <td>Salário</td>
+            <td>Cidade</td>
+            <td>Quantidade de vagas</td>
+            <td>Ações</td>
+        </tr>
 
-<table>
-    <tr>
-      <td>Nome da vaga</td>
-      <td>Empresa</td>
-      <td>Salário</td>
-      <td>Cidade</td>
-      <td>Quantidade de vagas</td>
-      <td>Ações</td>
-    </tr>
+        {% for job in jobs %}
+            <tr>
+                <td>{{ job.user }}</td>
+                <td>{{ job.nome }}</td>
+                <td>{{ job.empresa }}</td>
+                <td>R$ {{ job.salario }}</td>
+                <td>{{ job.cidade }}</td>
+                <td>{{ job.qtd_jobs }}</td>
+                <td><a href="{% url 'ver_job' job.id %}">Ver vaga</a>||
+                <a href="{% url 'delete_job' job.id %}">Deletar vaga</a></td>
+            </tr>
+        {% endfor %}
 
-    {% for job in jobs %}
-    <tr>
-      <td>{{ job.nome }}</td>
-      <td>{{ job.empresa }}</td>
-      <td>R$ {{ job.salario }}</td>
-      <td>{{ job.cidade }}</td>
-      <td>{{ job.qtd_jobs }}</td>
-      <td><a href="{% url 'ver_job' job.id %}">Ver vaga</a></td>
-    </tr>
-    {% endfor %}
-
-  </table>
-  {% endblock %}
+    </table>
+{% endblock %}
