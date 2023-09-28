@@ -5,9 +5,19 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <title>{% block titulo %}{% endblock %}</title>
+
+    {% block css %}{% endblock %}
 </head>
-<div style="float: right;">
+<body>
+<div class="header">
+    <div class="nav-links">
+        <a href="{% url 'pagina_home' %}">Home</a>
+        <a href="{% url 'pagina_blog' %}">Blog</a>
+        <a href="{% url 'pagina_jobs' %}">Jobs</a>
+    </div>
+
     {% if user.is_authenticated %}
         <p>Olá, {{ user.username }}!</p>
         <a href="{% url 'sair' %}">Logout</a>
@@ -16,12 +26,7 @@
     {% endif %}
 </div>
 
-
-<body>
 <h1>{% block titulo_body %}{% endblock %}</h1>
-<a href="{% url 'pagina_home' %}">Home</a>
-<a href="{% url 'pagina_blog' %}">Blog</a>
-<a href="{% url 'pagina_jobs' %}">Jobs</a>
 
 {% block conteudo %}{% endblock %}
 </body>
