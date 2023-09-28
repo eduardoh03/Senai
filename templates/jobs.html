@@ -36,13 +36,18 @@
                 <td class="center">{% if job.cidade %}{{ job.cidade }}{% else %}N/A{% endif %}</td>
                 <td class="center">{% if job.qtd_jobs %}{{ job.qtd_jobs }}{% else %}N/A{% endif %}</td>
                 <td>
-                    <a class="action-link view" href="{% url 'ver_job' job.id %}" title="Ver detalhes da vaga">Ver
-                        vaga</a>
-                    {% if job.user == user or user.is_staff %}
-                        <a class="action-link delete" href="{% url 'delete_job' job.id %}" title="Deletar esta vaga">Deletar
+                    <div style="white-space: nowrap;">
+                        <a class="action-link view" href="{% url 'ver_job' job.id %}" title="Ver detalhes da vaga">Ver
                             vaga</a>
-                    {% endif %}
+                        {% if job.user == user or user.is_staff %}
+                            <a class="action-link update" href="{% url 'update_job' job.id %}"
+                               title="Modificar esta vaga">Modificar vaga</a>
+                            <a class="action-link delete" href="{% url 'delete_job' job.id %}"
+                               title="Deletar esta vaga">Deletar vaga</a>
+                        {% endif %}
+                    </div>
                 </td>
+
             </tr>
         {% endfor %}
 

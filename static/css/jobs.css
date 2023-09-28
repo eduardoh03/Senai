@@ -1,6 +1,7 @@
 .center {
-  text-align: center;
+    text-align: center;
 }
+
 body {
     font-family: Arial, sans-serif;
 }
@@ -42,10 +43,12 @@ a:hover {
 
 /* jobs.css */
 
+/* jobs.css */
+
 .action-link {
     display: inline-block;
-    margin: 0 10px;
-    padding: 5px 10px;
+    margin: 0;
+    padding: 0 10px; /* Mantém o padding horizontal e remove o vertical */
     text-decoration: none;
 }
 
@@ -75,4 +78,28 @@ a:hover {
 .action-link.create a:hover {
     background-color: white;
     color: black;
+}
+
+.action-link.update {
+    background-color: rgba(255, 106, 0, 0.85);
+    color: white;
+}
+
+.action-link.update:hover {
+    background-color: rgba(255, 106, 0, 0.64);
+    color: white;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }

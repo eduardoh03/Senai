@@ -1,5 +1,57 @@
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit">
-</form>
+{% extends "base.html" %}
+{% load static %}
+{% block conteudo %}
+    {% block css %}
+        <link rel="stylesheet" href="{% static 'css/jobs.css' %}">
+    {% endblock %}
+    <div class="center-div">
+        <h1>Atualizar Job - {{ instance.nome }}</h1>
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                <ul>
+                    {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                            <li><strong>{{ field }}:</strong> {{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_user">Usuário:</label>
+                <select id="id_user" name="user">
+                    {% for user in form.fields.user.queryset %}
+                        <option value="{{ user.pk }}" {% if user.pk == form.instance.user.pk %}selected{% endif %}>
+                            {{ user.username }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="id_nome">Nome:</label>
+                <input type="text" id="id_nome" name="nome" value="{{ form.nome.value|default:'' }}">
+            </div>
+            <div class="form-group">
+                <label for="id_empresa">Empresa:</label>
+                <input type="text" id="id_empresa" name="empresa" value="{{ form.empresa.value|default:'' }}">
+            </div>
+            <div class="form-group">
+                <label for="id_salario">Salário:</label>
+                <input type="text" id="id_salario" name="salario" value="{{ form.salario.value|default:'' }}">
+            </div>
+            <div class="form-group">
+                <label for="id_cidade">Cidade:</label>
+                <input type="text" id="id_cidade" name="cidade" value="{{ form.cidade.value|default:'' }}">
+            </div>
+            <div class="form-group">
+                <label for="id_qtd_jobs">Quantidade de vagas:</label>
+                <input type="text" id="id_qtd_jobs" name="qtd_jobs" value="{{ form.qtd_jobs.value|default:'' }}">
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+{% endblock %}
