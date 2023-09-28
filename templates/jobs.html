@@ -18,23 +18,23 @@
     <table>
     <caption>Lista de vagas</caption>
         <tr>
-            <th>Usuário</th>
-            <th>Nome da vaga</th>
-            <th>Empresa</th>
-            <th>Salário</th>
-            <th>Cidade</th>
-            <th>Quantidade de vagas</th>
-            <th>Ações</th>
+            <th class="center">Usuário</th>
+            <th class="center">Nome da vaga</th>
+            <th class="center">Empresa</th>
+            <th class="center">Salário</th>
+            <th class="center">Cidade</th>
+            <th class="center">Quantidade de vagas</th>
+            <th class="center">Ações</th>
         </tr>
 
         {% for job in jobs %}
             <tr>
-                <td>{% if job.user %}{{ job.user }}{% else %}Usuário não cadastrado{% endif %}</td>
-                <td>{% if job.nome %}{{ job.nome }}{% else %}N/A{% endif %}</td>
-                <td>{% if job.empresa %}{{ job.empresa }}{% else %}N/A{% endif %}</td>
-                <td>{% if job.salario %}R$ {{ job.salario }}{% else %}N/A{% endif %}</td>
-                <td>{% if job.cidade %}{{ job.cidade }}{% else %}N/A{% endif %}</td>
-                <td>{% if job.qtd_jobs %}{{ job.qtd_jobs }}{% else %}N/A{% endif %}</td>
+                <td class="center">{% if job.user %}{{ job.user }}{% else %}Usuário não cadastrado{% endif %}</td>
+                <td class="center">{% if job.nome %}{{ job.nome }}{% else %}N/A{% endif %}</td>
+                <td class="center">{% if job.empresa %}{{ job.empresa }}{% else %}N/A{% endif %}</td>
+                <td class="center">{% if job.salario %}R$ {{ job.salario }}{% else %}N/A{% endif %}</td>
+                <td class="center">{% if job.cidade %}{{ job.cidade }}{% else %}N/A{% endif %}</td>
+                <td class="center">{% if job.qtd_jobs %}{{ job.qtd_jobs }}{% else %}N/A{% endif %}</td>
                 <td>
                     <a class="action-link view" href="{% url 'ver_job' job.id %}" title="Ver detalhes da vaga">Ver
                         vaga</a>
