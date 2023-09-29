@@ -11,46 +11,138 @@
 
 {% block conteudo %}
 
-    <div class="action-link create">
-        <a href="{% url 'pagina_jobs_create_job' %}">Criar vaga</a>
-    </div>
+{#    <div class="action-link create">#}
+{#        <a href="{% url 'pagina_jobs_create_job' %}">Criar vaga</a>#}
+{#    </div>#}
+{##}
+{#    <table>#}
+{#        <caption>Lista de vagas</caption>#}
+{#        <tr>#}
+{#            <th class="center">Usuário</th>#}
+{#            <th class="center">Nome da vaga</th>#}
+{#            <th class="center">Empresa</th>#}
+{#            <th class="center">Salário</th>#}
+{#            <th class="center">Cidade</th>#}
+{#            <th class="center">Quantidade de vagas</th>#}
+{#            <th class="center">Ações</th>#}
+{#        </tr>#}
+{##}
+{#        {% for job in jobs %}#}
+{#            <tr>#}
+{#                <td class="center">{% if job.user %}{{ job.user }}{% else %}Usuário não cadastrado{% endif %}</td>#}
+{#                <td class="center">{% if job.nome %}{{ job.nome }}{% else %}N/A{% endif %}</td>#}
+{#                <td class="center">{% if job.empresa %}{{ job.empresa }}{% else %}N/A{% endif %}</td>#}
+{#                <td class="center">{% if job.salario %}R$ {{ job.salario }}{% else %}N/A{% endif %}</td>#}
+{#                <td class="center">{% if job.cidade %}{{ job.cidade }}{% else %}N/A{% endif %}</td>#}
+{#                <td class="center">{% if job.qtd_jobs %}{{ job.qtd_jobs }}{% else %}N/A{% endif %}</td>#}
+{#                <td>#}
+{#                    <div style="white-space: nowrap;">#}
+{#                        <a class="action-link view" href="{% url 'ver_job' job.id %}" title="Ver detalhes da vaga">Ver#}
+{#                            vaga</a>#}
+{#                        {% if job.user == user or user.is_staff %}#}
+{#                            <a class="action-link update" href="{% url 'update_job' job.id %}"#}
+{#                               title="Modificar esta vaga">Modificar vaga</a>#}
+{#                            <a class="action-link delete" href="{% url 'delete_job' job.id %}"#}
+{#                               title="Deletar esta vaga">Deletar vaga</a>#}
+{#                        {% endif %}#}
+{#                    </div>#}
+{#                </td>#}
+{##}
+{#            </tr>#}
+{#        {% endfor %}#}
+{##}
+{##}
+{#    </table>#}
 
-    <table>
-        <caption>Lista de vagas</caption>
-        <tr>
-            <th class="center">Usuário</th>
-            <th class="center">Nome da vaga</th>
-            <th class="center">Empresa</th>
-            <th class="center">Salário</th>
-            <th class="center">Cidade</th>
-            <th class="center">Quantidade de vagas</th>
-            <th class="center">Ações</th>
-        </tr>
-
-        {% for job in jobs %}
-            <tr>
-                <td class="center">{% if job.user %}{{ job.user }}{% else %}Usuário não cadastrado{% endif %}</td>
-                <td class="center">{% if job.nome %}{{ job.nome }}{% else %}N/A{% endif %}</td>
-                <td class="center">{% if job.empresa %}{{ job.empresa }}{% else %}N/A{% endif %}</td>
-                <td class="center">{% if job.salario %}R$ {{ job.salario }}{% else %}N/A{% endif %}</td>
-                <td class="center">{% if job.cidade %}{{ job.cidade }}{% else %}N/A{% endif %}</td>
-                <td class="center">{% if job.qtd_jobs %}{{ job.qtd_jobs }}{% else %}N/A{% endif %}</td>
-                <td>
-                    <div style="white-space: nowrap;">
-                        <a class="action-link view" href="{% url 'ver_job' job.id %}" title="Ver detalhes da vaga">Ver
-                            vaga</a>
-                        {% if job.user == user or user.is_staff %}
-                            <a class="action-link update" href="{% url 'update_job' job.id %}"
-                               title="Modificar esta vaga">Modificar vaga</a>
-                            <a class="action-link delete" href="{% url 'delete_job' job.id %}"
-                               title="Deletar esta vaga">Deletar vaga</a>
-                        {% endif %}
+        <section class="mt-100">
+            <div class="pxp-container">
+                <div class="row">
+                    <div class="col-lg-5 col-xl-4 col-xxl-3">
+                        <div class="pxp-jobs-list-side-filter">
+                            <div class="pxp-list-side-filter-header d-flex d-lg-none">
+                                <div class="pxp-list-side-filter-header-label">Filtrar</div>
+                                <a role="button"><span class="fa fa-sliders"></span></a>
+                            </div>
+                            <div class="mt-4 mt-lg-0 d-lg-block pxp-list-side-filter-panel">
+                                <h3>Tipo</h3>
+                                <div class="list-group mt-2 mt-lg-3">
+                                    <label class="list-group-item d-flex justify-content-between align-items-center pxp-checked">
+                                        <span class="d-flex">
+                                            <input class="form-check-input me-2" type="checkbox" value="" checked>
+                                            Hibrido
+                                        </span>
+                                        <span class="badge rounded-pill">56</span>
+                                    </label>
+                                    <label class="list-group-item d-flex justify-content-between align-items-center mt-2 mt-lg-3">
+                                        <span class="d-flex">
+                                            <input class="form-check-input me-2" type="checkbox" value="">
+                                            Presencial
+                                        </span>
+                                        <span class="badge rounded-pill">34</span>
+                                    </label>
+                                    <label class="list-group-item d-flex justify-content-between align-items-center mt-2 mt-lg-3">
+                                        <span class="d-flex">
+                                            <input class="form-check-input me-2" type="checkbox" value="">
+                                            Remoto
+                                        </span>
+                                        <span class="badge rounded-pill">24</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </td>
+                    <div class="col-lg-7 col-xl-8 col-xxl-9">
+                        <div class="pxp-jobs-list-top mt-4 mt-lg-0">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-auto">
+                                    <h2><span class="pxp-text-light">Exibindo</span> 8,536 <span class="pxp-text-light">vagas</span></h2>
+                                </div>
+                                <div class="col-auto">
+                                    <select class="form-select">
+                                        <option value="0" selected>Mais relevante</option>
+                                        <option value="1">Novos</option>
+                                        <option value="2">Antigos</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
 
-            </tr>
-        {% endfor %}
+                        <div>
+                            {% for job in jobs %}
+                            <div class="pxp-jobs-card-3 pxp-has-border">
+                                <div class="row align-items-center justify-content-between">
+                                    <div class="col-sm-3 col-md-2 col-lg-3 col-xl-2 col-xxl-auto">
+                                        <a href="#" class="pxp-jobs-card-3-company-logo" style="background-image: url({% static 'images/company-logo-1.png' %});"></a>
+                                    </div>
+                                    <div class="col-sm-9 col-md-10 col-lg-9 col-xl-10 col-xxl-4">
+                                        <a href="#" class="pxp-jobs-card-3-title mt-3 mt-sm-0">Senior Editor</a>
+                                        <div class="pxp-jobs-card-3-details">
+                                            <a href="#" class="pxp-jobs-card-3-location">
+                                                <span class="fa fa-globe"></span>San Francisco, CA
+                                            </a>
+                                            <div class="pxp-jobs-card-3-type">Full-time</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8 col-xl-6 col-xxl-4 mt-3 mt-xxl-0">
+                                        <a href="#" class="pxp-jobs-card-3-category">
+                                            <div class="pxp-jobs-card-3-category-label">Marketing & Communication</div>
+                                        </a>
+                                        <div class="pxp-jobs-card-3-date-company">
+                                            <span class="pxp-jobs-card-3-date pxp-text-light">3 days ago by</span> <a href="#" class="pxp-jobs-card-3-company">Artistre Studio</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xl-2 col-xxl-auto mt-3 mt-xxl-0 pxp-text-right">
+                                        <a href="#" class="btn rounded-pill pxp-card-btn">Ver</a>
+                                    </div>
+                                </div>
 
+                            </div>
+                            {% endfor %}
 
-    </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 {% endblock %}

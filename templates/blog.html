@@ -6,14 +6,41 @@
 
 {% block conteudo %}
 
-    {% for noticia in noticias %}
-        <div width="40%" height="auto">
-            <h2>{{noticia.titulo_noticia}}</h2>
-            <p>{{noticia.conteudo_noticia}}</p>
-            <a href="{% url 'blog_detalhes' noticia.id %}">
-                <p>Ver notícia</p>
-            </a>
-        </div>
-    {% endfor %}
+    <section>
+            <div class="pxp-container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-9">
+                        <div class="pxp-blog-hero">
+                            <h1 class="text-center">Noticias</h1>
+                            <div class="pxp-hero-subtitle pxp-text-light text-center">Todas as noticias do blog</div>
+                        </div>
+                        <div class="mt-1 mt-lg-1">
+                            <div class="row">
+                                {% for noticia in noticias %}
+                                <div class="col-md-6 col-xxl-4 pxp-posts-card-1-container">
+                                    <div class="pxp-posts-card-1 pxp-has-border">
+                                        <div class="pxp-posts-card-1-top">
+                                            <div class="pxp-posts-card-1-top-bg">
+                                                <div class="pxp-posts-card-1-image pxp-cover" style="background-image: url('https://shorturl.at/bkvS0');"></div>
+                                            </div>
+                                            <div class="pxp-posts-card-1-content">
+                                                <a href="single-blog-post.html" class="pxp-posts-card-1-title">{{noticia.titulo_noticia}}</a>
+                                                <div class="pxp-posts-card-1-summary pxp-text-light">{{noticia.conteudo_noticia}}</div>
+                                            </div>
+                                        </div>
+                                        <div class="pxp-posts-card-1-bottom">
+                                            <div class="pxp-posts-card-1-cta">
+                                                <a href="{% url 'blog_detalhes' noticia.id %}">Saiba mais<span class="fa fa-angle-right"></span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 {% endblock %}
